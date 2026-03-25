@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ml5@1.2.1/dist/ml5.min.js"></script>
     <style>
-        body { background: #0a0a0f; color: white; font-family: sans-serif; text-align: center; }
-        #camera-container { margin: 20px auto; width: 640px; border: 2px solid #00ff88; }
-        .stats { display: flex; justify-content: center; gap: 20px; font-weight: bold; }
+        body { background: #050508; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #00ff88; text-shadow: 0 0 10px #00ff8844; margin: 20px 0; font-size: 1.5rem; }
+        .main-container { display: flex; gap: 20px; padding: 20px; flex-wrap: wrap; justify-content: center; }
+        #camera-container { border: 2px solid #1a1a2e; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .stats-panel { width: 300px; display: flex; flex-direction: column; gap: 15px; }
+        .card { background: #111122; border-radius: 12px; padding: 20px; border-left: 4px solid #00ff88; transition: 0.3s; }
+        .card.error { border-left-color: #ff4444; }
+        .label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .value { font-size: 1.5rem; font-weight: bold; margin-top: 5px; color: #00ff88; }
+        .value.bad { color: #ff4444; }
     </style>
 </head>
 <body>
-    <h1>ZEN POSTURE LIVE</h1>
-    <div id="camera-container"></div>
-    <div class="stats">
-        <div>SCOR: <span id="ui-scor">0%</span></div>
-        <div id="status">Sistem Offline</div>
+    <h1>ZEN POSTURE <span style="color:white">ANALYTICS</span></h1>
+    <div class="main-container">
+        <div id="camera-container"></div>
+        <div class="stats-panel">
+            <div class="card" id="card-scor">
+                <div class="label">Scor Sănătate</div>
+                <div id="ui-scor" class="value">0%</div>
+            </div>
+            <div class="card" id="card-status">
+                <div class="label">Monitorizare Gât</div>
+                <div id="ui-status" class="value">SCANARE...</div>
+            </div>
+            <div class="card" id="card-umeri">
+                <div class="label">Tensiune Umeri</div>
+                <div id="ui-umeri" class="value">OPTIMĂ</div>
+            </div>
+        </div>
     </div>
     <script src="sketch.js"></script>
 </body>
